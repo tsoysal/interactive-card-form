@@ -1,0 +1,74 @@
+@mixin setBackgroundImage($src) {
+    background-image: url($src);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@mixin setCardShape {
+    width: 270px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+@mixin setPositionAbs($top, $left) {
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+
+.cardSection {
+    @include setBackgroundImage('../images/bg-main-mobile.png');
+    height: 220px;
+    color: var(--white-color);
+
+    &__cardWrapper {
+        position: relative;
+        margin-inline: auto;
+    }
+
+    &__cardBack {
+        @include setBackgroundImage('../images/bg-card-back.png');
+        @include setCardShape;
+        z-index: 10;
+        position: relative;
+        top: 30px;
+        right: -25px;
+
+        &__cvc {
+            @include setPositionAbs(66px, 210px);
+            font-size: .7em;
+            opacity: .8;
+        }
+    }
+
+    &__cardFront {
+        @include setBackgroundImage('../images/bg-card-front.png');
+        @include setCardShape;
+        z-index: 20;
+        position: relative;
+        top: -35px;
+        left: -40px;
+
+        &__frontLogo {
+            @include setPositionAbs(15px, 15px);
+            width: 50px;
+        }
+
+        &__cardNumbers {
+            @include setPositionAbs(80px, 15px);
+        }
+
+        &__cardHolderName {
+            @include setPositionAbs(120px, 15px);
+            font-size: .6em;
+            opacity: .8;
+        }
+
+        &__cardDates {
+            @include setPositionAbs(120px, 210px);
+            font-size: .6em;
+            opacity: .8;
+        }
+    }
+}

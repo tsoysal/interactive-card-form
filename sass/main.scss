@@ -1,0 +1,17 @@
+@use './fonts';
+@use './colors';
+@use './cardSection';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    letter-spacing: 1px;
+}
+
+body {
+    font-size: 18px;
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+}
