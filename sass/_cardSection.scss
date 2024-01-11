@@ -5,70 +5,106 @@
     background-position: center;
 }
 
-@mixin setCardShape {
-    width: 270px;
-    height: 150px;
-    border-radius: 8px;
-}
-
-@mixin setPositionAbs($top, $left) {
-    position: absolute;
-    top: $top;
-    left: $left;
-}
-
 .cardSection {
     @include setBackgroundImage('../images/bg-main-mobile.png');
-    height: 220px;
     color: var(--white-color);
+    height: 350px;
+    position: relative;
+    
+    &__cardFront {
+       --card-padding: 2rem;
+       --card-number-size: 1.5em;
+       --card-details-size: .9em;
+       position: absolute;
+       bottom: -22%;
+       left: 5%;
+       z-index: 10;
+       width: min-content;
 
-    &__cardWrapper {
-        position: relative;
-        margin-inline: auto;
+       &>*:not(&__BgImg) {
+        position: absolute;
+       }
+
+       &__BgImg {
+        display: block;
+       }
+
+       &__Logo {
+        top: var(--card-padding);
+        left: var(--card-padding);
+       }
+
+       &__Numbers {
+        top: 55%;
+        left: var(--card-padding);
+        font-size: var(--card-number-size);
+        letter-spacing: 4px !important;
+       }
+
+       &__HolderName {
+        bottom: var(--card-padding);
+        left: var(--card-padding);
+        font-size: var(--card-details-size);
+        opacity: .8;
+       }
+
+       &__Dates {
+        bottom: var(--card-padding);
+        right: var(--card-padding);
+        font-size: var(--card-details-size);
+        opacity: .8;
+       }
+
     }
 
     &__cardBack {
-        @include setBackgroundImage('../images/bg-card-back.png');
-        @include setCardShape;
-        z-index: 10;
-        position: relative;
-        top: 30px;
-        right: -25px;
+       position: absolute;
+       top: 10%;
+       right: 5%;
+       --cvc-size: .9em;
+        
+       &>*:not(&__BgImg) {
+        position: absolute;
+       }
 
-        &__cvc {
-            @include setPositionAbs(66px, 210px);
-            font-size: .7em;
-            opacity: .8;
-        }
+       &__BgImg {
+        display: block;
+       }
+
+       &__cvc {
+        top: 45%;
+        right: 3.5rem;
+        font-size: var(--cvc-size);
+        opacity: .8;
+       }
     }
+}
 
-    &__cardFront {
-        @include setBackgroundImage('../images/bg-card-front.png');
-        @include setCardShape;
-        z-index: 20;
-        position: relative;
-        top: -35px;
-        left: -40px;
+@media screen and (max-width: 470px) {
+    .cardSection {
+        height: 230px;
+        
+        &__cardFront {
+            --card-padding: 1rem;
+            --card-number-size: .9em;
+            --card-details-size: .7em;
 
-        &__frontLogo {
-            @include setPositionAbs(15px, 15px);
-            width: 50px;
+            &__BgImg {
+                width: 300px;
+            }
+            &__Logo {
+               width: 20%;
+            }
         }
 
-        &__cardNumbers {
-            @include setPositionAbs(80px, 15px);
-        }
-
-        &__cardHolderName {
-            @include setPositionAbs(120px, 15px);
-            font-size: .6em;
-            opacity: .8;
-        }
-
-        &__cardDates {
-            @include setPositionAbs(120px, 210px);
-            font-size: .6em;
-            opacity: .8;
+        &__cardBack {
+            --cvc-size: .7em;
+            &__BgImg {
+                width: 300px;
+            }
+            &__cvc {
+                right: 2.5rem;
+            }
         }
     }
 }
