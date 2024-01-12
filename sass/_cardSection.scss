@@ -8,13 +8,13 @@
 .cardSection {
     @include setBackgroundImage('../images/bg-main-mobile.png');
     color: var(--white-color);
-    height: 350px;
+    height: 230px;
     position: relative;
     
     &__cardFront {
-       --card-padding: 2rem;
-       --card-number-size: 1.5em;
-       --card-details-size: .9em;
+        --card-padding: 1rem;
+            --card-number-size: .9em;
+            --card-details-size: .7em;
        position: absolute;
        bottom: -22%;
        left: 5%;
@@ -27,11 +27,13 @@
 
        &__BgImg {
         display: block;
+        width: 300px;
        }
 
        &__Logo {
         top: var(--card-padding);
         left: var(--card-padding);
+        width: 20%;
        }
 
        &__Numbers {
@@ -61,7 +63,7 @@
        position: absolute;
        top: 10%;
        right: 5%;
-       --cvc-size: .9em;
+       --cvc-size: .7em;
         
        &>*:not(&__BgImg) {
         position: absolute;
@@ -69,42 +71,14 @@
 
        &__BgImg {
         display: block;
+        width: 300px;
        }
 
        &__cvc {
         top: 45%;
-        right: 3.5rem;
+        right: 2.5rem;
         font-size: var(--cvc-size);
         opacity: .8;
        }
-    }
-}
-
-@media screen and (max-width: 470px) {
-    .cardSection {
-        height: 230px;
-
-        &__cardFront {
-            --card-padding: 1rem;
-            --card-number-size: .9em;
-            --card-details-size: .7em;
-
-            &__BgImg {
-                width: 300px;
-            }
-            &__Logo {
-               width: 20%;
-            }
-        }
-
-        &__cardBack {
-            --cvc-size: .7em;
-            &__BgImg {
-                width: 300px;
-            }
-            &__cvc {
-                right: 2.5rem;
-            }
-        }
     }
 }
